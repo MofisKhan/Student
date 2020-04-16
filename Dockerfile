@@ -6,7 +6,7 @@ FROM tomcat:8.0-alpine
 
 LABEL maintainer="deepak@softwareyoga.com"
 
-ADD student.war /usr/local/tomcat/webapps/
+COPY */target/Student-Inventory.war /usr/local/tomcat/webapps/
 
 EXPOSE 8080
 
