@@ -21,7 +21,7 @@ pipeline {
         }
         stage("Run the container"){
             steps{
-                sh "docker run -d -p 95-100:8082 tomcat"
+                sh "docker run -d -p 95-100:8080 tomcat"
             }
         }
         stage("push image to docker hub"){
