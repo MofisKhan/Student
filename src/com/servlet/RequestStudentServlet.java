@@ -18,9 +18,9 @@ public class RequestStudentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		try {
-		String roll_num = (String) request.getSession().getAttribute("roll_num");
+		String first_name = (String) request.getSession().getAttribute("fn");
 		RequestDAO dao = new RequestDAO();
-		List<student> student = dao.getAllStudentDetails(roll_num);
+		List<student> student = dao.getAllStudentDetails(first_name);
 		request.setAttribute("student", student);
 		request.getRequestDispatcher("requestView.jsp").forward(request,response);
 		}
@@ -30,5 +30,4 @@ public class RequestStudentServlet extends HttpServlet {
 			response.sendRedirect("requestView.jsp?msg=Something went wrong, please try again");
 		}
 	}
-
 }

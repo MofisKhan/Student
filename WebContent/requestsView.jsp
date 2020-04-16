@@ -11,8 +11,7 @@
 </head>
 
 <body>
-			
-							<div>
+					<div>
 									<%
 										List<student> student = (List<student>) request.getAttribute("student");
 									%>

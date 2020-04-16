@@ -14,8 +14,8 @@
 			<th>Fetch Student Details</th>
 		</tr>
 		<tr>
-			<td>Enter the roll Number</td>
-			<td><input type="text" name="roll_num"></td>
+			<td>Enter the first name</td>
+			<td><input type="text" name="fn"></td>
 		</tr>
 		
 		<tr>
