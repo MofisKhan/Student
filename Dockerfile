@@ -4,7 +4,7 @@ FROM tomcat:8.0-alpine
 
 LABEL maintainer="MofisKhan"
 
-ADD /home/user1/workspace/Inventory/target/Student-Inventory.war /usr/local/tomcat/webapps/
+ADD target/Student-Inventory.war /usr/local/tomcat/webapps/
 
 EXPOSE 8080
 
