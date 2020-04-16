@@ -1,12 +1,14 @@
 pipeline {
+   
    agent {
   label 'slave'
-}
+   }
+   
    stages {
       stage('GIT poll') {
          steps {
             git url: 'https://github.com/MofisKhan/Student' 
-}
+         }
       }
       
       stage('maven build'){         
@@ -24,12 +26,4 @@ pipeline {
                 sh "docker run -d -p 95-100:8080 tomcat"
             }
         }
-        stage("push image to docker hub"){
-            steps{
-                withDockerRegistry(credentialsId: 'a5f2aa26-0fcb-46fb-b224-1417ddeb0901', url: 'https://hub.docker.com/?ref=login') {
-                    sh "docker push tomcat"
-                }               
-            }
-        }
-   }
 }
