@@ -4,10 +4,10 @@ services:
              db:
                 image: mysql
                 environment:
-                     MYSQL_ROOT_PASSWORD: 'root'
-                     MYSQL_DATABASE: 'psmpadb'
-                     MYSQL_USER: 'root'
-                     MYSQL_PASSWORD: 'root'
+                     MYSQL_ROOT_PASSWORD: root
+                     MYSQL_DATABASE: psmpadb
+                     MYSQL_USER: root
+                     MYSQL_PASSWORD: root
                 ports:
                      - 3307:3307
                 healthcheck:
@@ -25,8 +25,8 @@ services:
                   JDBC_PASS: root
                 ports:
                    - 8001:8080
-                volumes:
-                   - ./targets/*:/usr/local/tomcat/webapps
+                #volumes:
+                #   - target//usr/local/tomcat/webapps
                 healthcheck:
                    test: ["CMD","catalina.sh" ,"run"]
                 links:
