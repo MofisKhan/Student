@@ -1,0 +1,30 @@
+pipeline {
+   
+   agent {
+  label 'slave'
+   }
+   
+   stages {
+      stage('GIT poll') {
+         steps {
+            git url: 'https://github.com/MofisKhan/Student' 
+         }
+      }
+      
+      stage('maven build'){         
+          steps{
+              sh 'mvn package'
+          }
+      }
+        stage("build docker image"){
+            steps{
+                sh "docker build . -t tomcat"
+            }
+        }
+        stage("Run the container"){
+            steps{
+                sh "docker run -d -p 95-100:8080 tomcat"
+            }
+        }
+      }
+}
