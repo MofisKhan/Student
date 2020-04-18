@@ -11,7 +11,15 @@ pipeline {
          }
       }
       
+<<<<<<< HEAD
       stage('maven build'){         
+=======
+      stage('maven build'){      
+      input
+          {
+          message "Maven build sucessful, can we proceed"
+          }
+>>>>>>> 12c978af11ad8584f758b8024ee832423fcfd3fa
           steps{
               sh 'mvn package'
           }
