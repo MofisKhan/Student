@@ -1,25 +1,35 @@
-db:
-        image: mysql:alpine
-  environment:
-    MYSQL_ROOT_PASSWORD: root
-    MYSQL_DATABASE: psmpadb
-    MYSQL_USER: root
-    MYSQL_PASSWORD: root
-  ports:
-    - 3306:3306
-  volumes:
-   - ./db:/docker-entrypoint-initdb.d
+version: '3.4'
+services:
 
-web:
-  image: tomcat:alpine
-  # Environment variables do not appear to be getting loaded the first time Tomcat starts!
-  environment:
-    JDBC_URL: jdbc:mysql://db:3306/psmpadb?connectTimeout=0&amp;socketTimeout=0&amp;autoReconnect=true
-    JDBC_USER: root
-    JDBC_PASS: root
-  ports:
-   - 8001:8080
-  volumes:
-   - ./tomcat/webapps:/usr/local/tomcat/webapps
-  links:
-    - db
+             db:
+                image: mysql
+                environment:
+                     MYSQL_ROOT_PASSWORD: 'root'
+                     MYSQL_DATABASE: 'psmpadb'
+                     MYSQL_USER: 'root'
+                     MYSQL_PASSWORD: 'root'
+                ports:
+                     - 3307:3307
+                healthcheck:
+                     test: ["CMD","docker-entrypoint.sh", "mysqld"]
+
+               # volumes:
+               #      - ./db:/docker-entrypoint-initdb.d
+
+             web:
+                image: tomcat:alpine
+                # Environment variables do not appear to be getting loaded the first time Tomcat starts!
+                environment:
+                  JDBC_URL: jdbc:mysql://db:3306/psmpadb?connectTimeout=0&amp;socketTimeout=0&amp;autoReconnect=true
+                  JDBC_USER: root
+                  JDBC_PASS: root
+                ports:
+                   - 8001:8080
+                volumes:
+                   - ./tomcat/webapps:/usr/local/tomcat/webapps
+                healthcheck:
+                   test: ["CMD","catalina.sh" ,"run"]
+                links:
+                   - db
+
+[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B
