@@ -1,0 +1,30 @@
+pipeline {
+   
+   agent {
+  label 'slave'
+   }
+   
+   stages {
+      stage('GIT poll') {
+         steps {
+            git url: 'https://github.com/MofisKhan/Student' 
+         }
+      }
+      
+      stage('maven build'){      
+      input
+          {
+          message "Maven build sucessful, can we proceed"
+          }
+
+          steps{
+              sh 'mvn package'
+          }
+      }
+        stage("build docker image"){
+            steps{
+                sh "docker-compose up -d"
+            }
+        }
+      }
+}
