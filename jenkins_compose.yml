@@ -10,18 +10,14 @@ pipeline {
       }
       
       stage('maven build'){      
-      input
-          {
-          message "Maven build sucessful, can we proceed"
-          }
-
-          steps{
+                steps{
               sh 'mvn package'
           }
       }
         stage("build docker image"){
             steps{
-                sh "docker-compose up -d"
+                sh 'docker-compose build'
+                sh 'docker-compose up -d'
             }
         }
       }
