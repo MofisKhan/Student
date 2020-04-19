@@ -4,6 +4,7 @@ pipeline {
    
    environment {
         PATH = "$PATH:/usr/local/bin/"
+        JENKINS_PATH= "JENKINS_PATH:/usr/bin/docker"
     }
     
    stages {
