@@ -21,6 +21,7 @@ pipeline {
         stage("build and run docker images"){
             steps{
                 sh 'docker-compose --version'
+                sh 'docker-compose up '
             }
         }
       }
