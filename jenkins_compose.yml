@@ -14,9 +14,8 @@ pipeline {
               sh 'mvn package'
           }
       }
-        stage("build docker image"){
+        stage("build and run docker images"){
             steps{
-                sh 'docker-compose build'
                 sh 'docker-compose up -d'
             }
         }
