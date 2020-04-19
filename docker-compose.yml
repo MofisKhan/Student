@@ -10,8 +10,8 @@ services:
                      MYSQL_PASSWORD: root
                 ports:
                      - 3307:3307
-                healthcheck:
-                     test: ["CMD","docker-entrypoint.sh", "mysqld"]
+               # healthcheck:
+               #      test: ["CMD","docker-entrypoint.sh", "mysqld"]
 
                # volumes:
                #      - ./db:/docker-entrypoint-initdb.d
@@ -25,7 +25,7 @@ services:
                   JDBC_PASS: root
                 ports:
                    - 8001:8080
-                healthcheck:
-                   test: ["CMD","catalina.sh" ,"run"]
+               # healthcheck:
+               #    test: ["CMD","catalina.sh" ,"run"]
                 links:
                    - db
