@@ -29,5 +29,5 @@ services:
                 #   - ./targets/*:/usr/local/tomcat/webapps
                 healthcheck:
                    test: ["CMD","catalina.sh" ,"run"]
-                links:
+                depends_on:
                    - db
