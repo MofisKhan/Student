@@ -21,16 +21,16 @@ pipeline {
               sh 'mvn package'
           }
       }
-        stage("build docker image"){
+       stage("build docker image"){
             steps{
                 sh 'docker-compose up -d'
             }
+         }   
          stage("docker swarm replication "){
                steps{
                sh 'docker stack deploy --compose-file docker-compose.yml Student-I2'
                sh 'docker stack services Student-I2'
                }
           }
-        }
-      }
+       }
 }
