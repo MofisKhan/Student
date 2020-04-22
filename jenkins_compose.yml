@@ -28,6 +28,7 @@ pipeline {
          }   
          stage("docker swarm replication "){
                steps{
+               sh 'docker swarm join --token SWMTKN-1-2d05d79wz7m019vrzqpqbxftf2hu9e8gwmo89gk2zck4zjf793-clr8khi9hcz4r46mhfdp5o3o5   192.168.179.11:2377'
                sh 'docker stack deploy --compose-file docker-compose.yml Student-I2'
                sh 'docker stack services Student-I2'
                }
