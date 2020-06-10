@@ -1,10 +1,7 @@
-FROM tomcat:8.5
-
-FROM tomcat:8.0-alpine
-
+FROM tomcat:alpine
 LABEL maintainer="MofisKhan"
 
-COPY target/Student-Inventory.war /usr/local/tomcat/webapps/
+COPY target/ /usr/local/tomcat/webapps/
 
 EXPOSE 8080
 
